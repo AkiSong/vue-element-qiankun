@@ -1,0 +1,38 @@
+.DS_Store
+/main-app/node_modules
+/sub-app1/node_modules
+/sub-app2/node_modules
+/main-app/dist
+/sub-app1/dist
+/sub-app2/dist
+/main-app/package-lock.json
+/sub-app1/package-lock.json
+/sub-app2/package-lock.json
+/main-app/yarn.lock
+/sub-app1/yarn.lock
+/sub-app2/yarn.lock
+
+# local env files
+.env.local
+.env.*.local
+.idea
+
+# Log files
+/main-app/npm-debug.log*
+/sub-app1/npm-debug.log*
+/sub-app2/npm-debug.log*
+/main-app/yarn-debug.log*
+/sub-app1/yarn-debug.log*
+/sub-app2/yarn-debug.log*
+/main-app/yarn-error.log*
+/sub-app1/yarn-error.log*
+/sub-app2/yarn-error.log*
+
+# Editor directories and files
+/.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
