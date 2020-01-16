@@ -18,10 +18,10 @@ module.exports = {
   devServer: {
     port: port,
     open: true,
-    overlay: {
-      warnings: false,
-      errors: true
-    },
+    // overlay: {
+    //   warnings: false,
+    //   errors: true
+    // },
     proxy: {
       [process.env.VUE_APP_BASE_API]: {
         target: `http://localhost:${port}/mock`,

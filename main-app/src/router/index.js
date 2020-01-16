@@ -5,7 +5,6 @@ Vue.use(Router)
 
 import Layout from '@/layout'
 
-import componentsRouter from './modules/components'
 import subApp from './modules/subapp'
 export const constantRoutes = [
   {
@@ -70,8 +69,7 @@ export const constantRoutes = [
 
 export const asyncRoutes = [
   subApp,
-  componentsRouter
-  // { path: '*', redirect: '/404', hidden: true }
+  { path: '*', redirect: '/404', hidden: true }
 ]
 
 const createRouter = () => new Router({

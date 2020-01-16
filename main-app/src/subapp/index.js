@@ -3,62 +3,11 @@ import {
   runAfterFirstMounted,
   setDefaultMountApp,
   start
-} from "qiankun-test";
-import store from '@/store'
-
-// function renderWorkSubApp({ appContent, loading }) {}
-
-// function renderLayoutSubApp({ appContent, loading }) {
-//   // store.dispatch('layoutSubapp/setAppContent', { appContent, loading })
-// }
+} from 'qiankun-test'
 
 function genActiveRule(routerPrefix) {
   return location => location.pathname.startsWith(routerPrefix)
 }
-// const subappRegistry = [
-//   {
-//     name: 'vue sub-app1',
-//     entry: '//localhost:8081',
-//     renderWorkSubApp,
-//     activeRule: genActiveRule('/subapp/app1')
-//   },
-//   {
-//     name: 'vue sub-app2',
-//     entry: '//localhost:8082',
-//     renderWorkSubApp,
-//     activeRule: genActiveRule('/subapp/app2')
-//   },
-//   {
-//     name: 'vue nav-app',
-//     entry: '//localhost:8083',
-//     render: renderLayoutSubApp,
-//     // activeRule: genActiveRule('/dashboard')
-//     activeRule: () => true
-//   }
-// ]
-
-// const lifeCycles = {
-//   beforeLoad: [
-//     app => {
-//       console.log('before load', app)
-//     }
-//   ],
-//   beforeMount: [
-//     app => {
-//       console.log('before mount', app)
-//       // store.commit('subApp/SET_APP_LOADING', false)
-//     }
-//   ],
-//   afterUnmount: [
-//     app => {
-//       const { name, render } = app
-//       if (name !== 'vue nav-app') {
-//         console.log('afterUnmount触发了')
-//         // render({ appContent: '', loading: false })
-//       }
-//     }
-//   ]
-// }
 
 // 请求子应用跨域
 const request = url =>
@@ -67,19 +16,6 @@ const request = url =>
       'Access-Control-Allow-Origin': '*'
     }
   })
-
-// // 注册子应用
-// registerMicroApps(subappRegistry, lifeCycles);
-// // 在主加载后默认处于活动状态
-// setDefaultMountApp("/");
-// // 第一个应用构建完成后执行
-// runAfterFirstMounted(() => console.info("first app mounted"));
-
-// start({
-//   prefetch: false,
-//   fetch: request,
-//   singular: false
-// });
 
 export default {
   data() {
@@ -140,7 +76,7 @@ export default {
             const { name } = app
             if (name !== 'vue nav-app') {
               console.log('beforeMount触发了')
-              store.commit('subApp/SET_APP_LOADING', false)
+              this.$store.commit('subApp/SET_APP_LOADING', false)
             }
           }
         ],
