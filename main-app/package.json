@@ -37,7 +37,7 @@
     ]
   },
   "dependencies": {
-    "axios": "0.18.0",
+    "axios": "0.19.2",
     "concurrently": "^5.0.0",
     "driver.js": "0.9.5",
     "element-ui": "2.7.0",
