@@ -1,11 +1,11 @@
 const state = {
-  navAppContent: '',
-  navLoading: false
+  appContent: '',
+  loading: false
 }
 
 const mutations = {
   SET_APP_CONTENT: (state, { appContent, loading }) => {
-    state.navAppContent = appContent
+    state.appContent = appContent
     state.loading = loading
   },
   SET_APP_LOADING: (state, status) => {
@@ -15,7 +15,7 @@ const mutations = {
 
 const actions = {
   setAppContent({ commit, state }, { appContent, loading }) {
-    if (state.navAppContent !== appContent) {
+    if (state.appContent !== appContent) {
       commit('SET_APP_CONTENT', { appContent, loading })
     } else {
       commit('SET_APP_LOADING', loading)

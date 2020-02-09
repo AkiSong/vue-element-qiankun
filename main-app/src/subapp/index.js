@@ -20,26 +20,26 @@ const request = url =>
 export default {
   data() {
     return {
-      layoutSubapp: {},
+      sidemenuSubapp: {},
       workSubapp: {},
       subappRegistry: [],
       lifeCycles: {}
     }
   },
   watch: {
-    layoutSubapp(obj) {
-      this.$store.dispatch('layoutSubapp/setAppContent', obj)
+    sidemenuSubapp(obj) {
+      this.$store.dispatch('sidemenuSubapp/setAppContent', obj)
     },
     workSubapp(obj) {
-      this.$store.dispatch('subApp/setAppContent', obj)
+      this.$store.dispatch('workSubApp/setAppContent', obj)
     }
   },
   mounted() {
     this.runSubApp()
   },
   methods: {
-    renderLayoutSubApp(navapp) {
-      this.layoutSubapp = { ...navapp }
+    renderSidemenuSubApp(navapp) {
+      this.sidemenuSubapp = { ...navapp }
     },
     renderWorkSubApp(renderWorkSubApp) {
       this.workSubapp = { ...renderWorkSubApp }
@@ -47,11 +47,17 @@ export default {
     runSubApp() {
       this.subappRegistry = [
         {
-          name: 'vue nav-app',
-          entry: '//localhost:8083',
-          render: this.renderLayoutSubApp,
+          name: 'vue sidermenu-app',
+          entry: '//localhost:8084',
+          render: this.renderSidemenuSubApp,
           activeRule: () => true
         },
+        // {
+        //   name: "vue nav-app",
+        //   entry: "//localhost:8083",
+        //   render: this.renderSidemenuSubApp,
+        //   activeRule: () => true
+        // },
         {
           name: 'vue sub-app1',
           entry: '//localhost:8081',
@@ -76,7 +82,7 @@ export default {
             const { name } = app
             if (name !== 'vue nav-app') {
               console.log('beforeMount触发了')
-              this.$store.commit('subApp/SET_APP_LOADING', false)
+              this.$store.commit('workSubApp/SET_APP_LOADING', false)
             }
           }
         ],
