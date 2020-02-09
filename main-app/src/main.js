@@ -7,6 +7,7 @@ import '@/styles/index.scss'
 import App from './App'
 import store from './store'
 // import _store from './redux'
+import _store from './eventbus'
 import router from './router'
 import './icons' // icon
 import './permission' // permission control
@@ -27,7 +28,7 @@ Object.keys(filters).forEach(key => {
 
 Vue.config.productionTip = false
 
-// window.$store = _store
+window.$store = _store
 
 // 初始化主应用
 new Vue({

@@ -46,18 +46,18 @@ export default {
     },
     runSubApp() {
       this.subappRegistry = [
-        {
-          name: 'vue sidermenu-app',
-          entry: '//localhost:8084',
-          render: this.renderSidemenuSubApp,
-          activeRule: () => true
-        },
         // {
-        //   name: "vue nav-app",
-        //   entry: "//localhost:8083",
+        //   name: 'vue sidermenu-app',
+        //   entry: '//localhost:8084',
         //   render: this.renderSidemenuSubApp,
         //   activeRule: () => true
         // },
+        {
+          name: 'vue nav-app',
+          entry: '//localhost:8083',
+          render: this.renderSidemenuSubApp,
+          activeRule: () => true
+        },
         {
           name: 'vue sub-app1',
           entry: '//localhost:8081',
@@ -80,7 +80,7 @@ export default {
         beforeMount: [
           app => {
             const { name } = app
-            if (name !== 'vue nav-app') {
+            if (name !== 'vue nav-app' || name !== 'vue sidermenu-app') {
               console.log('beforeMount触发了')
               this.$store.commit('workSubApp/SET_APP_LOADING', false)
             }
@@ -89,7 +89,7 @@ export default {
         afterUnmount: [
           app => {
             const { name, render } = app
-            if (name !== 'vue nav-app') {
+            if (name !== 'vue nav-app' || name !== 'vue sidermenu-app') {
               console.log('afterUnmount触发了')
               render({ appContent: '', loading: false })
             }
