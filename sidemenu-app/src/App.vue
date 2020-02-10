@@ -35,20 +35,18 @@ export default {
   },
   computed: {
     activeMenu() {
-      // const route = this.$route;
-      // const { meta, path } = route;
-      // if (meta.activeMenu) {
-      //   return meta.activeMenu;
-      // }
+      const route = this.$route;
+      const { meta, path } = route;
+      if (meta.activeMenu) {
+        return meta.activeMenu;
+      }
       return '/';
     },
     permission_routes() {
-      return [];
-      // return window.$store.state.permission_routes;
+      return window.$store.getters.permission_routes;
     },
     isCollapse() {
-      return true;
-      // return !window.$store.state.sidebar.opened;
+      return !window.$store.getters.sidebar.opened;
     },
     variables() {
       return variables;

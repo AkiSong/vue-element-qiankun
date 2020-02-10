@@ -53,12 +53,12 @@ export default {
     },
     runSubApp() {
       this.subappRegistry = [
-        // {
-        //   name: 'vue sidermenu-app',
-        //   entry: '//localhost:8084',
-        //   render: this.renderSidemenuSubApp,
-        //   activeRule: () => true
-        // },
+        {
+          name: 'vue sidermenu-app',
+          entry: '//localhost:8084',
+          render: this.renderSidemenuSubApp,
+          activeRule: () => true
+        },
         {
           name: 'vue nav-app',
           entry: '//localhost:8083',
