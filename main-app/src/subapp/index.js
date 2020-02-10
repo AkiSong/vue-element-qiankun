@@ -20,6 +20,7 @@ const request = url =>
 export default {
   data() {
     return {
+      navbarSubapp: {},
       sidemenuSubapp: {},
       workSubapp: {},
       subappRegistry: [],
@@ -27,6 +28,9 @@ export default {
     }
   },
   watch: {
+    navbarSubapp(obj) {
+      this.$store.dispatch('navbarSubapp/setAppContent', obj)
+    },
     sidemenuSubapp(obj) {
       this.$store.dispatch('sidemenuSubapp/setAppContent', obj)
     },
@@ -38,8 +42,11 @@ export default {
     this.runSubApp()
   },
   methods: {
-    renderSidemenuSubApp(navapp) {
-      this.sidemenuSubapp = { ...navapp }
+    renderNavbarSubApp(navbarSubapp) {
+      this.navbarSubapp = { ...navbarSubapp }
+    },
+    renderSidemenuSubApp(sidemenuSubapp) {
+      this.sidemenuSubapp = { ...sidemenuSubapp }
     },
     renderWorkSubApp(renderWorkSubApp) {
       this.workSubapp = { ...renderWorkSubApp }
@@ -55,21 +62,21 @@ export default {
         {
           name: 'vue nav-app',
           entry: '//localhost:8083',
-          render: this.renderSidemenuSubApp,
+          render: this.renderNavbarSubApp,
           activeRule: () => true
-        },
-        {
-          name: 'vue sub-app1',
-          entry: '//localhost:8081',
-          render: this.renderWorkSubApp,
-          activeRule: genActiveRule('/subapp/app1')
-        },
-        {
-          name: 'vue sub-app2',
-          entry: '//localhost:8082',
-          render: this.renderWorkSubApp,
-          activeRule: genActiveRule('/subapp/app2')
         }
+        // {
+        //   name: 'vue sub-app1',
+        //   entry: '//localhost:8081',
+        //   render: this.renderWorkSubApp,
+        //   activeRule: genActiveRule('/subapp/app1')
+        // },
+        // {
+        //   name: 'vue sub-app2',
+        //   entry: '//localhost:8082',
+        //   render: this.renderWorkSubApp,
+        //   activeRule: genActiveRule('/subapp/app2')
+        // }
       ]
       this.lifeCycles = {
         beforeLoad: [

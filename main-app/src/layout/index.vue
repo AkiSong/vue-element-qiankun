@@ -5,11 +5,11 @@
       class="drawer-bg"
       @click="handleClickOutside"
     />
-    <div class="sidebar-container" v-html="sidemenuApp" />
+    <div class="sidebar-container" v-html="sidemenuSubapp" />
     <!-- <sidebar class="sidebar-container" /> -->
     <div :class="{ hasTagsView: needTagsView }" class="main-container">
       <div :class="{ 'fixed-header': fixedHeader }">
-        <!-- <navbar /> -->
+        <div v-html="navbarSubapp" />
         <tags-view v-if="needTagsView" />
       </div>
       <app-main />
@@ -18,26 +18,30 @@
 </template>
 
 <script>
-import { AppMain, Navbar, TagsView } from './components'
+import { AppMain, TagsView } from './components'
 import ResizeMixin from './mixin/ResizeHandler'
 import { mapState } from 'vuex'
 export default {
   name: 'Layout',
   components: {
     AppMain,
-    Navbar,
     TagsView
   },
   mixins: [ResizeMixin],
   computed: {
     ...mapState({
-      sidebar: state => state.app.sidebar,
-      device: state => state.app.device,
       showSettings: state => state.settings.showSettings,
       needTagsView: state => state.settings.tagsView,
       fixedHeader: state => state.settings.fixedHeader,
-      sidemenuApp: state => state.sidemenuSubapp.appContent
+      sidemenuSubapp: state => state.sidemenuSubapp.appContent, // 侧边菜单栏 html字符串
+      navbarSubapp: state => state.navbarSubapp.appContent // nav导航栏 html字符串
     }),
+    sidebar() {
+      return window.$store.state.app.sidebar
+    },
+    device() {
+      return window.$store.state.app.sidebar
+    },
     classObj() {
       return {
         hideSidebar: !this.sidebar.opened,
@@ -49,7 +53,7 @@ export default {
   },
   methods: {
     handleClickOutside() {
-      this.$store.dispatch('app/closeSideBar', {
+      window.$store.dispatch('app/closeSideBar', {
         withoutAnimation: false
       })
     }

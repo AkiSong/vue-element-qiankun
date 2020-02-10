@@ -14,8 +14,7 @@ export default {
   components: { adminDashboard, editorDashboard },
   data() {
     return {
-      currentRole: 'adminDashboard',
-      test: '321'
+      currentRole: 'adminDashboard'
     }
   },
   computed: {
