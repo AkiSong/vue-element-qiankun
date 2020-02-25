@@ -6,7 +6,6 @@
       @click="handleClickOutside"
     />
     <div class="sidebar-container" v-html="sidemenuSubapp" />
-    <!-- <sidebar class="sidebar-container" /> -->
     <div :class="{ hasTagsView: needTagsView }" class="main-container">
       <div :class="{ 'fixed-header': fixedHeader }">
         <div v-html="navbarSubapp" />

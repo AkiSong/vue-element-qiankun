@@ -64,19 +64,19 @@ export default {
           entry: '//localhost:8083',
           render: this.renderNavbarSubApp,
           activeRule: () => true
+        },
+        {
+          name: 'vue sub-app1',
+          entry: '//localhost:8081',
+          render: this.renderWorkSubApp,
+          activeRule: genActiveRule('/subapp/app1')
+        },
+        {
+          name: 'vue sub-app2',
+          entry: '//localhost:8082',
+          render: this.renderWorkSubApp,
+          activeRule: genActiveRule('/subapp/app2')
         }
-        // {
-        //   name: 'vue sub-app1',
-        //   entry: '//localhost:8081',
-        //   render: this.renderWorkSubApp,
-        //   activeRule: genActiveRule('/subapp/app1')
-        // },
-        // {
-        //   name: 'vue sub-app2',
-        //   entry: '//localhost:8082',
-        //   render: this.renderWorkSubApp,
-        //   activeRule: genActiveRule('/subapp/app2')
-        // }
       ]
       this.lifeCycles = {
         beforeLoad: [
