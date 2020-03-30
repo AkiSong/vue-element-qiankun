@@ -35,8 +35,8 @@ module.exports = {
       }
     },
     output: {
-      library: "[name]",
-      filename: "[name].js",
+      library: "subapp2",
+      filename: "[name].[hash:8].js",
       libraryTarget: "umd",
       globalObject: "this"
     }

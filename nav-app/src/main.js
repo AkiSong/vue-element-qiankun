@@ -6,7 +6,12 @@ import router from "./router";
 import store from "./store"; //nav自己的状态, 可以不用
 
 if (!window.$store) {
-  window.$store = {};
+  window.$store = {
+    state: {},
+    mutations: {},
+    actions: {},
+    getters: {}
+  };
   window.$store.dispatch = function() {
     return null;
   };

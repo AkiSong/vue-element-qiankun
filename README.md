@@ -3,6 +3,8 @@
 ## 目录结构
 
 - vue-element-qiankun 为主应用
+- nav-app 为导航栏应用
+- sidemenu-app 为侧边栏应用
 - sub-app1 为子应用
 - sub-app2 为子应用
 
@@ -301,5 +303,5 @@ npm install postcss-selector-namespace
 
 ## 感谢
 感谢 single-spa
-感谢 umijs开发团队带来的qiankun 
+感谢 umijs开发团队带来的qiankun
 感谢wusp1994的qiankunTestByWu应用

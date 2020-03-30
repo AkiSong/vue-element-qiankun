@@ -40,13 +40,15 @@ export default {
       if (meta.activeMenu) {
         return meta.activeMenu;
       }
-      return '/';
+      return "/";
     },
     permission_routes() {
-      return window.$store.getters.permission_routes;
+      if (window.$store.getters.permission_routes === undefined) return [];
+      else return window.$store.getters.permission_routes;
     },
     isCollapse() {
-      return !window.$store.getters.sidebar.opened;
+      if (window.$store.getters.sidebar === undefined) return false;
+      else return !window.$store.getters.sidebar.opened;
     },
     variables() {
       return variables;

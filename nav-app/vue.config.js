@@ -28,15 +28,14 @@ module.exports = {
   },
   // 自定义webpack配置
   configureWebpack: {
-    // name: name,
     resolve: {
       alias: {
         "@": resolve("src")
       }
     },
     output: {
-      library: "[name]",
-      filename: "[name].js",
+      library: "navapp",
+      filename: "[name].[hash:8].js",
       libraryTarget: "umd",
       globalObject: "this"
     }

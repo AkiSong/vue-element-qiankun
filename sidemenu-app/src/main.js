@@ -6,7 +6,12 @@ import store from "./store";
 import "./icons";
 
 if (!window.$store) {
-  window.$store = {};
+  window.$store = {
+    state: {},
+    mutations: {},
+    actions: {},
+    getters: {}
+  };
   window.$store.dispatch = function() {
     return null;
   };

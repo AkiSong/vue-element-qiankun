@@ -3,7 +3,7 @@ import {
   runAfterFirstMounted,
   setDefaultMountApp,
   start
-} from 'qiankun-test'
+} from 'qiankun'
 
 function genActiveRule(routerPrefix) {
   return location => location.pathname.startsWith(routerPrefix)

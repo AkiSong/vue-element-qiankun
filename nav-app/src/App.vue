@@ -48,13 +48,12 @@ export default {
   },
   computed: {
     sidebar() {
-      return window.$store.getters.sidebar;
-    },
-    device() {
-      return window.$store.getters.sidebar;
+      if(window.$store.getters.sidebar === undefined) return {}
+      else return window.$store.getters.sidebar;
     },
     avatar() {
-      return window.$store.getters.avatar;
+      if(window.$store.getters.avatar === undefined) return ''
+      else return window.$store.getters.avatar;
     }
   },
   methods: {
