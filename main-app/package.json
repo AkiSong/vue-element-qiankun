@@ -46,7 +46,7 @@
     "normalize.css": "7.0.0",
     "nprogress": "0.2.0",
     "path-to-regexp": "2.4.0",
-    "qiankun-test": "0.0.1",
+    "qiankun": "^1.4.5",
     "redux": "^4.0.5",
     "screenfull": "4.2.0",
     "vue": "2.6.10",

@@ -6,19 +6,18 @@ import '@/styles/element-variables.scss'
 import '@/styles/index.scss'
 import App from './App'
 import store from './store'
-// import _store from './redux'
 import router from './router'
-import './icons' // icon
-import './permission' // permission control
-import './utils/error-log' // error log
-import * as filters from './filters' // global filters
+import './icons'
+import './permission'
+import './utils/error-log'
+import * as filters from './filters'
 import { mockXHR } from '../mock'
 if (process.env.NODE_ENV === 'production') {
   mockXHR()
 }
 
 Vue.use(Element, {
-  size: Cookies.get('size') || 'medium' // set element-ui default size
+  size: Cookies.get('size') || 'medium'
 })
 
 Object.keys(filters).forEach(key => {
@@ -27,7 +26,7 @@ Object.keys(filters).forEach(key => {
 
 Vue.config.productionTip = false
 
-// window.$store = _store
+window.$store = store
 
 // 初始化主应用
 new Vue({

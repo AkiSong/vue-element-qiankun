@@ -35,8 +35,8 @@ module.exports = {
       }
     },
     output: {
-      library: "[name]",
-      filename: "[name].js",
+      library: "sidemenuapp",
+      filename: "[name].[hash:8].js",
       libraryTarget: "umd",
       globalObject: "this"
     }

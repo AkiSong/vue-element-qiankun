@@ -3,7 +3,7 @@ import {
   runAfterFirstMounted,
   setDefaultMountApp,
   start
-} from 'qiankun-test'
+} from 'qiankun'
 
 function genActiveRule(routerPrefix) {
   return location => location.pathname.startsWith(routerPrefix)
@@ -20,6 +20,7 @@ const request = url =>
 export default {
   data() {
     return {
+      navbarSubapp: {},
       sidemenuSubapp: {},
       workSubapp: {},
       subappRegistry: [],
@@ -27,6 +28,9 @@ export default {
     }
   },
   watch: {
+    navbarSubapp(obj) {
+      this.$store.dispatch('navbarSubapp/setAppContent', obj)
+    },
     sidemenuSubapp(obj) {
       this.$store.dispatch('sidemenuSubapp/setAppContent', obj)
     },
@@ -38,8 +42,11 @@ export default {
     this.runSubApp()
   },
   methods: {
-    renderSidemenuSubApp(navapp) {
-      this.sidemenuSubapp = { ...navapp }
+    renderNavbarSubApp(navbarSubapp) {
+      this.navbarSubapp = { ...navbarSubapp }
+    },
+    renderSidemenuSubApp(sidemenuSubapp) {
+      this.sidemenuSubapp = { ...sidemenuSubapp }
     },
     renderWorkSubApp(renderWorkSubApp) {
       this.workSubapp = { ...renderWorkSubApp }
@@ -52,12 +59,12 @@ export default {
           render: this.renderSidemenuSubApp,
           activeRule: () => true
         },
-        // {
-        //   name: "vue nav-app",
-        //   entry: "//localhost:8083",
-        //   render: this.renderSidemenuSubApp,
-        //   activeRule: () => true
-        // },
+        {
+          name: 'vue nav-app',
+          entry: '//localhost:8083',
+          render: this.renderNavbarSubApp,
+          activeRule: () => true
+        },
         {
           name: 'vue sub-app1',
           entry: '//localhost:8081',
@@ -80,7 +87,7 @@ export default {
         beforeMount: [
           app => {
             const { name } = app
-            if (name !== 'vue nav-app') {
+            if (name !== 'vue nav-app' || name !== 'vue sidermenu-app') {
               console.log('beforeMount触发了')
               this.$store.commit('workSubApp/SET_APP_LOADING', false)
             }
@@ -89,7 +96,7 @@ export default {
         afterUnmount: [
           app => {
             const { name, render } = app
-            if (name !== 'vue nav-app') {
+            if (name !== 'vue nav-app' || name !== 'vue sidermenu-app') {
               console.log('afterUnmount触发了')
               render({ appContent: '', loading: false })
             }

@@ -5,6 +5,7 @@ function resolve(dir) {
 }
 
 const port = 8081;
+var name = 'sub-app2'
 
 module.exports = {
   publicPath: `//localhost:${port}`,
@@ -28,15 +29,15 @@ module.exports = {
   },
   // 自定义webpack配置
   configureWebpack: {
-    // name: name,
+    name: name,
     resolve: {
       alias: {
         "@": resolve("src")
       }
     },
     output: {
-      library: "[name]",
-      filename: "[name].js",
+      library: "subapp1",
+      filename: "[name].[hash:8].js",
       libraryTarget: "umd",
       globalObject: "this"
     }

@@ -6,9 +6,9 @@ const subRouter = {
   path: '/subapp',
   component: Layout,
   redirect: '/subapp/app1',
-  name: 'SubApp',
+  name: 'sub',
   meta: {
-    title: 'SubApp',
+    title: 'sub-app',
     icon: 'table'
   },
   children: [

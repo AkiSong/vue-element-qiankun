@@ -56,30 +56,16 @@
           <span style="margin-right:18px;">Username : editor</span>
           <span>Password : any</span>
         </div>
-
-        <el-button class="thirdparty-button" type="primary" @click="showDialog=true">
-          Or connect with
-        </el-button>
       </div>
     </el-form>
-
-    <el-dialog title="Or connect with" :visible.sync="showDialog">
-      Can not be simulated on local, so please combine you own business simulation! ! !
-      <br>
-      <br>
-      <br>
-      <social-sign />
-    </el-dialog>
   </div>
 </template>
 
 <script>
 import { validUsername } from '@/utils/validate'
-import SocialSign from './components/SocialSignin'
 
 export default {
   name: 'Login',
-  components: { SocialSign },
   data() {
     const validateUsername = (rule, value, callback) => {
       if (!validUsername(value)) {
@@ -107,7 +93,6 @@ export default {
       passwordType: 'password',
       capsTooltip: false,
       loading: false,
-      showDialog: false,
       redirect: undefined,
       otherQuery: {}
     }
@@ -124,9 +109,6 @@ export default {
       immediate: true
     }
   },
-  created() {
-    // window.addEventListener('storage', this.afterQRScan)
-  },
   mounted() {
     if (this.loginForm.username === '') {
       this.$refs.username.focus()
@@ -134,10 +116,8 @@ export default {
       this.$refs.password.focus()
     }
   },
-  destroyed() {
-    // window.removeEventListener('storage', this.afterQRScan)
-  },
   methods: {
+    // 检查大写锁定
     checkCapslock({ shiftKey, key } = {}) {
       if (key && key.length === 1) {
         if (shiftKey && (key >= 'a' && key <= 'z') || !shiftKey && (key >= 'A' && key <= 'Z')) {
@@ -150,6 +130,7 @@ export default {
         this.capsTooltip = false
       }
     },
+    // 显示密码
     showPwd() {
       if (this.passwordType === 'password') {
         this.passwordType = ''
@@ -160,6 +141,7 @@ export default {
         this.$refs.password.focus()
       })
     },
+    // 登陆
     handleLogin() {
       this.$refs.loginForm.validate(valid => {
         if (valid) {
@@ -178,6 +160,7 @@ export default {
         }
       })
     },
+    // 获取路由参数
     getOtherQuery(query) {
       return Object.keys(query).reduce((acc, cur) => {
         if (cur !== 'redirect') {
@@ -186,31 +169,11 @@ export default {
         return acc
       }, {})
     }
-    // afterQRScan() {
-    //   if (e.key === 'x-admin-oauth-code') {
-    //     const code = getQueryObject(e.newValue)
-    //     const codeMap = {
-    //       wechat: 'code',
-    //       tencent: 'code'
-    //     }
-    //     const type = codeMap[this.auth_type]
-    //     const codeName = code[type]
-    //     if (codeName) {
-    //       this.$store.dispatch('LoginByThirdparty', codeName).then(() => {
-    //         this.$router.push({ path: this.redirect || '/' })
-    //       })
-    //     } else {
-    //       alert('第三方登录失败')
-    //     }
-    //   }
-    // }
   }
 }
 </script>
 
 <style lang="scss">
-/* 修复input 背景不协调 和光标变色 */
-/* Detail see https://github.com/PanJiaChen/vue-element-admin/pull/927 */
 
 $bg:#283443;
 $light_gray:#fff;

@@ -1,10 +1,17 @@
 import Vue from "vue";
-import { Scrollbar, Menu } from "element-ui";
+import { Scrollbar, Menu, MenuItem, Submenu } from "element-ui";
 import App from "./App.vue";
+import router from "./router";
 import store from "./store";
+import "./icons";
 
 if (!window.$store) {
-  window.$store = {};
+  window.$store = {
+    state: {},
+    mutations: {},
+    actions: {},
+    getters: {}
+  };
   window.$store.dispatch = function() {
     return null;
   };
@@ -12,6 +19,8 @@ if (!window.$store) {
 
 Vue.use(Scrollbar);
 Vue.use(Menu);
+Vue.use(Submenu);
+Vue.use(MenuItem);
 
 Vue.config.productionTip = false;
 
@@ -20,12 +29,12 @@ let instance = null;
 function render() {
   instance = new Vue({
     store,
+    router,
     render: h => h(App)
   }).$mount("#sidemenuApp");
 }
 
 if (!window.singleSpaNavigate) {
-  // 检测是否是single-spa状态, 不是则独立运行
   render();
 }
 

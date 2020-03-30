@@ -23,10 +23,10 @@ export default {
       return this.$route.path.startsWith('/subapp')
     },
     content() {
-      return this.$store.state.subApp.appContent
+      return this.$store.state.workSubApp.appContent
     },
     loading() {
-      return this.$store.state.subApp.loading
+      return this.$store.state.workSubApp.loading
     }
   }
 }
